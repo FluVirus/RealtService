@@ -2,6 +2,7 @@
 using System.Reflection;
 using MediatR;
 using System.Net.NetworkInformation;
+using RealtService.Application.Offers;
 
 namespace RealtService.Application
 {
@@ -11,6 +12,7 @@ namespace RealtService.Application
         {
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(Ping).Assembly));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             return services;
         }
     }

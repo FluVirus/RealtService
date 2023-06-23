@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.Interfaces;
+using RealtService.Application.Offers.Commands.DeleteCommand;
 using RealtService.Domain.Entities;
 
 namespace RealtService.Application.Offers.Commands.UpdateOffer
@@ -31,4 +33,19 @@ namespace RealtService.Application.Offers.Commands.UpdateOffer
             return Unit.Value;
         }
     }
+
+    public class UpdateOfferProductCommandValidator : AbstractValidator<UpdateOfferCommand>
+    {
+        public UpdateOfferProductCommandValidator()
+        {
+            //Rules might be changed
+            RuleFor(c => c.UserId).NotEmpty();
+            RuleFor(c => c.Id).NotEmpty();
+            RuleFor(c => c.Address).NotEmpty();
+            RuleFor(c => c.Title).NotEmpty();
+            RuleFor(c => c.Description).NotEmpty();            
+        }
+    }
 }
+
+

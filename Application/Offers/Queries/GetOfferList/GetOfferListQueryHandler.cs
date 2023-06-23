@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using FluentValidation;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,15 @@ namespace RealtService.Application.Offers.Queries.GetOfferList
                 .ToListAsync(cancellationToken);
 
             return new OfferListVm { Offers =  offerQuery };
+        }
+    }
+
+    public class GetOfferListCommandValidator : AbstractValidator<GetOfferListQuery>
+    {
+        public GetOfferListCommandValidator()
+        {
+            //Rules might be changed
+            RuleFor(c => c.UserId).NotEmpty();            
         }
     }
 }

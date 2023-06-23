@@ -4,6 +4,8 @@ using RealtService.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Domain.Entities;
+using FluentValidation;
+using RealtService.Application.Offers.Commands.UpdateOffer;
 
 namespace RealtService.Application.Offers.Queries.GetOfferDetails
 {
@@ -23,6 +25,16 @@ namespace RealtService.Application.Offers.Queries.GetOfferDetails
             }
 
             return _mapper.Map<OfferDetailsVm>(entity);
+        }
+    }
+
+    public class GetOfferDetailsCommandValidator : AbstractValidator<GetOfferDetailsQuery>
+    {
+        public GetOfferDetailsCommandValidator()
+        {
+            //Rules might be changed
+            RuleFor(c => c.UserId).NotEmpty();
+            RuleFor(c => c.Id).NotEmpty();            
         }
     }
 }

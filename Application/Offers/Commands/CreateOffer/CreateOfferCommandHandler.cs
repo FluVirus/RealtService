@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using RealtService.Application.Interfaces;
 using RealtService.Domain.Entities.Offers;
 
@@ -27,6 +28,21 @@ namespace RealtService.Application.Offers.Commands.CreateOffer
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return offer.Id;
+        }
+    }
+
+    public class CreateProductCommandValidator : AbstractValidator<CreateOfferCommand>
+    {
+        public CreateProductCommandValidator()
+        {
+            //Rules might be changed
+            RuleFor(c => c.UserId).NotEmpty();
+            RuleFor(c => c.Title).NotEmpty();
+            RuleFor(c => c.Description).NotEmpty();
+            RuleFor(c => c.Address).NotEmpty();
+            RuleFor(c => c.CommercialOfferDatailsId).NotEmpty();
+            RuleFor(c => c.ResidentialOfferDatailsId).NotEmpty();
+            RuleFor(c => c.OfferTypeId).NotEmpty();                                   
         }
     }
 }

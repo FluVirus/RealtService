@@ -1,6 +1,8 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.Interfaces;
+using RealtService.Application.Offers.Commands.CreateOffer;
 using RealtService.Domain.Entities;
 
 namespace RealtService.Application.Offers.Commands.DeleteCommand
@@ -23,5 +25,15 @@ namespace RealtService.Application.Offers.Commands.DeleteCommand
             return Unit.Value;
         }
 
+    }
+
+    public class DeleteProductCommandValidator : AbstractValidator<DeleteOfferCommand>
+    {
+        public DeleteProductCommandValidator()
+        {
+            //Rules might be changed
+            RuleFor(c => c.UserId).NotEmpty();
+            RuleFor(c => c.Id).NotEmpty();            
+        }
     }
 }
