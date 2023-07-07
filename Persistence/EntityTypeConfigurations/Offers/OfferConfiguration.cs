@@ -2,13 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RealtService.Domain.Entities;
-using RealtService.Domain.Entities.Estates;
 using RealtService.Domain.Entities.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Offers;
 

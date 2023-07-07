@@ -1,5 +1,4 @@
-﻿
-namespace RealtService.Application.Estates.ResidentialEstates.Queries.GetEstateList
+﻿namespace RealtService.Application.Estates.ResidentialEstates.Queries.GetEstateList
 {
     public class ResEstateLookupDto 
     {

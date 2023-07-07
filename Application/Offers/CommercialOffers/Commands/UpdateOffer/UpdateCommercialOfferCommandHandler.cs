@@ -1,37 +1,37 @@
 ﻿using MediatR;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.Common.UnitOfWork;
-using RealtService.Application.Offers.ResidentialOffers.Commands.UpdateOffer;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Offers;
 
-namespace RealtService.Application.Offers.CommercialOffers.Commands.UpdateOffer
+namespace RealtService.Application.Offers.CommercialOffers.Commands.UpdateOffer;
+
+public class UpdateCommercialOfferCommandHandler : IRequestHandler<UpdateCommercialOfferCommand, Unit>
 {
-    public class UpdateCommercialOfferCommandHandler : IRequestHandler<UpdateCommercialOfferCommand, Unit>
+    private readonly IUnitOfWork _unitOfWork;
+
+    public UpdateCommercialOfferCommandHandler(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public UpdateCommercialOfferCommandHandler(IUnitOfWork unitOfWork)
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<Unit> Handle(UpdateCommercialOfferCommand request, CancellationToken cancellationToken)
+    {
+        IRepository<CommercialOffer> offerRepository = _unitOfWork.CommercialOffers;
+        var entity = await offerRepository.FindAsync(request.Id);
+        Console.WriteLine(entity is null);
+        if (entity == null)
         {
-            _unitOfWork = unitOfWork;
+            throw new NotFoundException(nameof(Offer), request.Id);
         }
-        public async Task<Unit> Handle(UpdateCommercialOfferCommand request, CancellationToken cancellationToken)
-        {
-            IRepository<CommercialOffer> offerRepository = _unitOfWork.CommercialOffers;
-            var entity = await offerRepository.FindAsync(request.Id);
-            Console.WriteLine(entity is null);
-            if (entity == null)
-            {
-                throw new NotFoundException(nameof(Offer), request.Id);
-            }
 
-            entity.Description = request.Description;
-            entity.Name = request.Name;
-            entity.Address = request.Address;
-            entity.EditDate = DateTime.Now;
+        entity.Description = request.Description;
+        entity.Name = request.Name;
+        entity.Address = request.Address;
+        entity.EditDate = DateTime.Now;
 
-            await _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
 
-            return Unit.Value;
-        }
+        return Unit.Value;
     }
 }

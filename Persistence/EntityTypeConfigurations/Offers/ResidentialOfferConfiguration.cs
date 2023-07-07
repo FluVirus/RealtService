@@ -4,11 +4,6 @@ using RealtService.Domain.Entities.Estates;
 using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Offers;
 using RealtService.Domain.Entities.Terms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Offers;
 

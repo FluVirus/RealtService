@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealtService.Application.Users.Commands;
 using RealtService.Domain.Entities.Users;
 using RealtService.WebApi.Controllers;
 using RealtService.WebApi.Models;
-using System.Diagnostics.CodeAnalysis;
 
 namespace RealtService.WebApi.Contollers;
 
@@ -34,7 +30,7 @@ public class AuthController : RealtServiceControllerBase
         {
             return Ok(new {token});
         }
-        return BadRequest();
+        return Unauthorized();
     }
 
     [HttpPost]
@@ -43,5 +39,4 @@ public class AuthController : RealtServiceControllerBase
         await Mediator.Send(signOutCommand);
         return Ok();
     }
-
 }

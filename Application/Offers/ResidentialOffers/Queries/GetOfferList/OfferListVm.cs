@@ -1,15 +1,8 @@
-﻿using RealtService.Domain.Entities;
-using RealtService.Domain.Entities.Offers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RealtService.Domain.Entities.Offers;
 
-namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList
+namespace RealtService.Application.Offers.ResidentialOffers.Queries.GetOfferList;
+
+public class ResiadentialOfferListVm
 {
-    public class ResiadentialOfferListVm
-    {
-        public IList<ResidentialOffer> Offers { get; set; }
-    }
+    public IList<ResidentialOffer> Offers { get; set; }
 }

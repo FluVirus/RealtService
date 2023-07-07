@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RealtService.Domain.Entities.Terms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealtService.Persistence.EntityTypeConfigurations.Terms;
 
@@ -20,7 +15,7 @@ public class CommercialLeasingConfiguration : IEntityTypeConfiguration<Commercia
             .HasDefaultValue(null)
             .IsRequired(false);
 
-        builder.Property<decimal?>(nameof(CommercialLeasing.PricePerMonth))
+        builder.Property<decimal?>(nameof(CommercialLeasing.PricePerYear))
             .HasColumnType("money")
             .HasDefaultValue(null)
             .IsRequired(false);

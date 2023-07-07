@@ -1,7 +1,5 @@
-﻿using System.Reflection;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using RealtService.Application.Common.Mappings;
-using RealtService.Application.Offers.Queries.GetOfferDetails;
 using RealtService.WebApi.Middleware;
 
 namespace RealtService.WebApi;
@@ -25,12 +23,13 @@ public static class ConfigureServices
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Student Teacher API",
+                Title = "RealtService API",
                 Version = "v1",
-                Description = "Student Teacher API Services.",
+                Description = "Realt Service",
                 Contact = new OpenApiContact
                 {
-                    Name = "Ajide Habeeb."
+                    Name = "Konanau Aliaksandr",
+                    Email = "m.kononov.alexander@gmail.com"
                 },
             });
             c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());

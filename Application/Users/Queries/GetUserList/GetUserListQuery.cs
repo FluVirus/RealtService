@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace RealtService.Application.Users.Queries.GetUserList
+namespace RealtService.Application.Users.Queries.GetUserList;
+
+public class GetUserListQuery : IRequest<UserListVm>
 {
-    public class GetUserListQuery : IRequest<UserListVm>
-    {
-    }
+
 }

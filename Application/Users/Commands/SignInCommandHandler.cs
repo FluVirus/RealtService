@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.IdentityModel.Tokens;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.Common.JWT;

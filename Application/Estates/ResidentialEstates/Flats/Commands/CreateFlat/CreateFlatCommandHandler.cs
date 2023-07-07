@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using RealtService.Application.Common.UnitOfWork;
-using RealtService.Domain.Entities;
 using RealtService.Domain.Entities.Estates;
-using RealtService.Domain.Entities.Offers;
-using RealtService.Domain.Entities.Users;
 
 namespace RealtService.Application.Estates.ResidentialEstates.Flats.Commands.CreateFlat
 {

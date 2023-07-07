@@ -1,9 +1,8 @@
 ﻿using RealtService.Domain.Entities;
 
-namespace RealtService.Application.Offers.Queries.GetOfferList
+namespace RealtService.Application.Offers.Queries.GetOfferList;
+
+public class OfferListVm
 {
-    public class OfferListVm
-    {
-        public IList<Offer> Offers { get; set; }
-    }
+    public IList<Offer> Offers { get; set; }
 }

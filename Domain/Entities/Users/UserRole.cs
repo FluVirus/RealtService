@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RealtService.Domain.Entities.Base;
 
 namespace RealtService.Domain.Entities.Users;
 

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using RealtService.Application.Common.Exceptions;
 using RealtService.Application.Common.UnitOfWork;
 using RealtService.Domain.Entities;

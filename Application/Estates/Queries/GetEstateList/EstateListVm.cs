@@ -1,9 +1,8 @@
 ﻿using RealtService.Domain.Entities.Estates;
 
-namespace RealtService.Application.Estates.Queries.GetEstateList
+namespace RealtService.Application.Estates.Queries.GetEstateList;
+
+public class EstateListVm
 {
-    public class EstateListVm
-    {
-        public IList<Estate> Estates { get; set; }
-    }
+    public IList<Estate> Estates { get; set; }
 }

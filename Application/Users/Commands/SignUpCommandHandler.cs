@@ -36,6 +36,8 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand, User>
         IdentityResult result = await _unitOfWork.UserManager.CreateAsync(user, request.Password);
         if (result.Succeeded)
         {
+            await _unitOfWork.UserManager.AddToRoleAsync(user, "Customer");
+
             return user;
         }
         else 
@@ -45,6 +47,7 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand, User>
             {
                 exceptions.Add(new Exception(message: $"Identity error №{error.Code} occured: {error.Description}"));
             }
+
             throw new AggregateException(message: "Through create new user some errors occured", innerExceptions: exceptions);
         }
     }
