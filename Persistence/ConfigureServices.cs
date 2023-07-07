@@ -18,7 +18,7 @@ public static class ConfigureServices
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
         services.AddDbContext<RealtServiceDBContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("LocalConnection"),
+                configuration.GetConnectionString("DefaultConnection"),
                 optionsBuilder => optionsBuilder.MigrationsAssembly(typeof(RealtServiceDBContext).Assembly.FullName)
             ),
             contextLifetime: ServiceLifetime.Scoped,
@@ -48,11 +48,15 @@ public static class ConfigureServices
         .AddRoles<UserRole>()
         .AddSignInManager<SignInManager<User>>()
         .AddRoleValidator<RoleValidator<UserRole>>()
-        .AddEntityFrameworkStores<RealtServiceDBContext>();
+        .AddEntityFrameworkStores<RealtServiceDBContext>()
+        .AddDefaultTokenProviders();
 
         services.AddAuthentication(cfg =>
         {
             cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            cfg.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+            cfg.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
+            cfg.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         })
         .AddJwtBearer(cfg =>
@@ -69,6 +73,7 @@ public static class ConfigureServices
                 ValidateIssuerSigningKey = true,
             };
         });
+
         return services;
     }
 }

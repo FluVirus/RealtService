@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace RealtService.Identity;
-[Obsolete]
+
 public class JwtTokenProvider : IJwtTokenProvider
 {
     public string GetJwtToken

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RealtService.Application.Common.JWT;
-[Obsolete]
+
 public interface IJwtTokenProvider
 {
     string GetJwtToken

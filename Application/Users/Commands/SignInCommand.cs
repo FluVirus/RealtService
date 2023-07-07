@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using RealtService.Domain.Entities.Users;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealtService.Application.Users.Commands;
 
-public class SignInCommand: IRequest<User>
+public class SignInCommand: IRequest<string?>
 {
     [DataType(DataType.EmailAddress)]
     public required string Email { get; set; }
@@ -13,7 +12,4 @@ public class SignInCommand: IRequest<User>
     public required string Password { get; set; }
 
     public bool RememberMe { get; set; }
-
-    [DataType(DataType.Url)]
-    public string? ReturnUrl { get; set; }
 }

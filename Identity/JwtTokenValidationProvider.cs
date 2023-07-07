@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RealtService.Identity;
-[Obsolete]
+
 public class JwtTokenValidationProvider : IJwtTokenValidationProvider
 {
     private readonly TokenValidationParameters _parameters;

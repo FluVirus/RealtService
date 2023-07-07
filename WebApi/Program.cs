@@ -21,7 +21,7 @@ public static class Program
             .AddPersistenceServices(configuration)
             .AddApplicationServices()
             .AddWebApiServices()
-            .AddSwaggerGen();
+            .AddIdentityServices(configuration);
 
         WebApplication app = builder.Build();
       //  app.UseMiddleware<GlobalErrorHandler>();
